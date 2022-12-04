@@ -64,7 +64,7 @@ Most of the images are also taken during daylight, where the brightness is quite
 The reference model, which is the pretrained [SSD Resnet model](https://arxiv.org/pdf/1512.02325.pdf) were trained and the losses are shown below.
 
 Training loss of the reference model
-![Training loss of reference model](Images\Train loss reference.png)
+<img src="Images\Train loss reference.png")
 
 Validation loss of reference model
 ![Validation loss of reference model](Images\Val loss reference.png)
