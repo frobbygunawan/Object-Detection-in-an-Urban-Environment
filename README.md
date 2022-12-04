@@ -53,7 +53,7 @@ By default, the evaluation script runs for only one epoch. Therefore, the eval l
 The dataset contains images of vehicles, pedestrians, and cyclists. The class distribution of the annonated objects are displayed below :
 
 Distribution of classes in training data
-![Class distribution of training data](Images\class_distribution.png)
+![Class distribution of training data](Images/class_distribution.png)
 
 It can be observed that the distribution is imbalanced since cars are detected more in the dataset and it is possible that the model would perform poorly when detecting the other classes due to the lack of training on these objects.
 
@@ -64,10 +64,10 @@ Most of the images are also taken during daylight, where the brightness is quite
 The reference model, which is the pretrained [SSD Resnet model](https://arxiv.org/pdf/1512.02325.pdf) were trained and the losses are shown below.
 
 Training loss of the reference model
-<img src="Images\Train loss reference.png")
+![Training loss of reference model](Images/Train%20loss%20reference.png)
 
 Validation loss of reference model
-![Validation loss of reference model](Images\Val loss reference.png)
+![Validation loss of reference model](Images/Val%20loss%20reference.png)
 
 The profile of the loss is increasing and then decreasing to a certain plateau, which followed the cosine learning rate decay implemented. We can see that the model performed quite poorly during training since the total loss is quite high. Comparing the validation and training losses, no significant difference could be observed between the two. 
 
@@ -79,13 +79,13 @@ Since the loss is quite high, one strategy is to implement image augmentations t
 * random_adjust_saturation
 * random_distort_color
 
-![Augmentations used](Images\Aug_visualization.JPG)
+![Augmentations used](Images/Aug_visualization.JPG)
 
 Most of these augmentations are intended to simulate the darker condition during the night where vision is less clearer. It also serves to simulate blurriness that might arises during foggy weather or the blurriness from lenses, such that the model could still detect and classify objects well.
 
 ### Improved model experiment
 Losses of improved model training/validation
-![Losses of improved model training/validation](Images\Tran val losses experiment.png)
+![Losses of improved model training/validation](Images/Tran%20val%20losses%20experiment.png)
 
 After additional augmentations, with the use of [adam optimizer](https://github.com/tensorflow/models/blob/master/research/object_detection/protos/optimizer.proto) and delta value adjustment of the [smooth weighted l1](https://github.com/tensorflow/models/blob/master/research/object_detection/protos/losses.proto) classification loss, we observe the highly reduced loss of the model, though the hyperparameters such as the learning rate could still be improved further. Furthermore, it is possible that with further iterations of training, the model could perform better since we only limited the steps to 2500 and there is a steady decrease overall in the loss observed in the chart. The validation loss is somewhere around the training loss, which suggest no overfitting has occured yet.
 
