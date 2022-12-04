@@ -53,7 +53,7 @@ By default, the evaluation script runs for only one epoch. Therefore, the eval l
 The dataset contains images of vehicles, pedestrians, and cyclists. The class distribution of the annonated objects are displayed below :
 
 Distribution of classes in training data
-![Class distribution of training data]()
+![Class distribution of training data](Images\class_distribution.png)
 
 It can be observed that the distribution is imbalanced since cars are detected more in the dataset and it is possible that the model would perform poorly when detecting the other classes due to the lack of training on these objects.
 
