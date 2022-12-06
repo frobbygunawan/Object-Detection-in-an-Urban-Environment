@@ -50,7 +50,12 @@ Once the training is finished, launch the evaluation process. Launching evaluati
 By default, the evaluation script runs for only one epoch. Therefore, the eval logs in Tensorboard will look like a blue dot.
 
 ## Dataset
-The dataset contains images of vehicles, pedestrians, and cyclists. The class distribution of the annonated objects are displayed below :
+The dataset contains images of vehicles, pedestrians, and cyclists. Additionally, it can contain various weather and condition, such as those sampled below :
+
+Distribution of classes in training data
+![Image samples](Images/Image%20samples.PNG)
+
+The class distribution of the annonated objects are displayed below :
 
 Distribution of classes in training data
 ![Class distribution of training data](Images/Class%20distribution.JPG)
@@ -69,6 +74,12 @@ Training loss of the reference model
 Validation loss of reference model
 ![Validation loss of reference model](Images/Val%20loss%20reference.png)
 
+Precision of reference model
+![Precision of reference model](Images/Precision_Training.png)
+
+Recall of reference model
+![Recall of reference model](Images/Recall_Training.png)
+
 The profile of the loss is increasing and then decreasing to a certain plateau, which followed the cosine learning rate decay implemented. We can see that the model performed quite poorly during training since the total loss is quite high. Comparing the validation and training losses, no significant difference could be observed between the two. 
 
 ### Augmentations
@@ -86,6 +97,12 @@ Most of these augmentations are intended to simulate the darker condition during
 ### Improved model experiment
 Losses of improved model training/validation
 ![Losses of improved model training/validation](Images/Tran%20val%20losses%20experiment.png)
+
+Precision of improved model
+![Precision of improved model](Images/Precision_Experiment.png)
+
+Recall of improved model
+![Recall of improved model](Images/Recall_Experiment.png)
 
 After additional augmentations, with the use of [adam optimizer](https://github.com/tensorflow/models/blob/master/research/object_detection/protos/optimizer.proto) and delta value adjustment of the [smooth weighted l1](https://github.com/tensorflow/models/blob/master/research/object_detection/protos/losses.proto) classification loss, we observe the highly reduced loss of the model, though the hyperparameters such as the learning rate could still be improved further. Furthermore, it is possible that with further iterations of training, the model could perform better since we only limited the steps to 2500 and there is a steady decrease overall in the loss observed in the chart. The validation loss is somewhere around the training loss, which suggest no overfitting has occured yet.
 
